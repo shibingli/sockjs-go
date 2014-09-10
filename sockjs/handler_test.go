@@ -10,7 +10,7 @@ import (
 
 func TestHandler_Create(t *testing.T) {
 	handler := newHandler("/echo", DefaultOptions, nil)
-	if handler.Prefix() != "^/echo" {
+	if handler.Prefix() != "/echo" {
 		t.Errorf("Prefix not properly set, got '%s' expected '%s'", handler.Prefix(), "/echo")
 	}
 	if handler.sessions == nil {

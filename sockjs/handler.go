@@ -26,15 +26,15 @@ func NewHandler(prefix string, opts Options, handleFunc func(Session)) http.Hand
 	return newHandler(prefix, opts, handleFunc)
 }
 
-func newHandler(prefix string, opts Options, handlerFunc func(Session)) *handler {
-	prefix = path.Clean("/" + prefix)
+func newHandler(prefixPath string, opts Options, handlerFunc func(Session)) *handler {
+	var prefix = path.Clean("/" + prefixPath)
 	if prefix == "/" {
 		prefix = ""
 	}
 	prefix = "^" + regexp.QuoteMeta(prefix)
 
 	h := &handler{
-		prefix:      prefix,
+		prefix:      prefixPath,
 		options:     opts,
 		handlerFunc: handlerFunc,
 		sessions:    make(map[string]*session),
