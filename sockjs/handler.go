@@ -31,7 +31,7 @@ func newHandler(prefix string, opts Options, handlerFunc func(Session)) *handler
 	if prefix == "/" {
 		prefix = ""
 	}
-	prefix = "^" + regexp.QuoteMeta(cleanPrefix)
+	prefix = "^" + regexp.QuoteMeta(prefix)
 
 	h := &handler{
 		prefix:      prefix,
